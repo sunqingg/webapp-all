@@ -1,5 +1,6 @@
 package com.sun.qing.controller;
 
+import com.sun.qing.pojo.SysUser;
 import com.sun.qing.service.SysUserService;
 import com.sun.qing.service.impl.SysUserServiceImpl;
 import jakarta.servlet.ServletException;
@@ -28,6 +29,12 @@ public class SysUserController extends BaseController {
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String userPwd = req.getParameter("userPwd");
-        userService.login(username,userPwd);
+        SysUser sysUser = new SysUser(null, username, userPwd);
+        boolean b = userService.login(sysUser);
+        if (b) {
+            resp.sendRedirect("index.html");
+        } else {
+            resp.getWriter().write("密码错了");
+        }
     }
 }

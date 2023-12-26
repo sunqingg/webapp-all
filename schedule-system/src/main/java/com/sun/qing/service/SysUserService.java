@@ -1,5 +1,7 @@
 package com.sun.qing.service;
 
+import com.sun.qing.pojo.SysUser;
+
 public interface SysUserService {
-    void login(String username, String userPwd);
+    boolean login(SysUser sysUser);
 }
