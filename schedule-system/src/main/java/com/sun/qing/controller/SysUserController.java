@@ -32,9 +32,10 @@ public class SysUserController extends BaseController {
         SysUser sysUser = new SysUser(null, username, userPwd);
         boolean b = userService.login(sysUser);
         if (b) {
-            resp.sendRedirect("index.html");
+            resp.sendRedirect("/index.html");
         } else {
             resp.getWriter().write("密码错了");
         }
+//        resp.getWriter().write("test");
     }
 }

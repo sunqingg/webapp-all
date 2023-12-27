@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/user/*")
+@WebServlet("/register/*")
 public class SysScheduleController extends BaseController {
 
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -12,7 +12,8 @@ public class SysUserDaoImpl implements SysUserDao {
     public SysUser getPassword(String username) {
         String sql = "select uid,username,user_pwd userPwd from sys_user where username = ?";
         List<SysUser> sysUserList = baseDao.baseQuery(SysUser.class, sql, username);
-        return sysUserList.size() >0 ? sysUserList.get(0) : null;
+        return sysUserList.get(0);
+//        return sysUserList.size() >0 ? sysUserList.get(0) : null;
 
     }
 }
