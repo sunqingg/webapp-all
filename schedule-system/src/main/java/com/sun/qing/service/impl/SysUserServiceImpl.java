@@ -10,11 +10,29 @@ public class SysUserServiceImpl implements SysUserService {
     SysUserDao sysUserDao =  new SysUserDaoImpl();
     @Override
     public boolean login(SysUser sysUser) {
+        String password = sysUser.getUserPwd();
         String username = sysUser.getUsername();
-        String encrypt = MD5Util.encrypt(username);
+        String encrypt = MD5Util.encrypt(password);
         SysUser user = sysUserDao.getPassword(username);
         if (user.getUserPwd().equals(encrypt)) {
             return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param sysUser
+     */
+    @Override
+    public boolean regist(SysUser sysUser) {
+        String username = sysUser.getUsername();
+        String userPwd = sysUser.getUserPwd();
+        Long count = sysUserDao.userCount(sysUser);
+        if (count == 0) {
+            int registRow = sysUserDao.regist(sysUser);
+            if (registRow > 0) {
+                return true;
+            }
         }
         return false;
     }

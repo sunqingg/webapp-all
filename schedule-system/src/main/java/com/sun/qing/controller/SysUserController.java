@@ -34,8 +34,21 @@ public class SysUserController extends BaseController {
         if (b) {
             resp.sendRedirect("/index.html");
         } else {
-            resp.getWriter().write("密码错了");
+            resp.sendRedirect("/loginUserPwdError.html");
+//            resp.getWriter().write("密码错了");
         }
 //        resp.getWriter().write("test");
+    }
+
+    protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String username = req.getParameter("username");
+        String userPwd = req.getParameter("userPwd");
+        SysUser sysUser = new SysUser(null, username, userPwd);
+        boolean b = userService.regist(sysUser);
+        if (b) {
+            resp.sendRedirect("/login.html");
+        }else {
+            resp.sendRedirect("/registFail.html");
+        }
     }
 }
