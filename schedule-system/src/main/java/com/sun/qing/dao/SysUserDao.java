@@ -8,4 +8,6 @@ public interface SysUserDao {
     Long userCount(SysUser sysUser);
 
     int regist(SysUser sysUser);
+
+    SysUser findByUsername(String username);
 }

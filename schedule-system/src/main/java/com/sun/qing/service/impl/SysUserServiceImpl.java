@@ -36,4 +36,14 @@ public class SysUserServiceImpl implements SysUserService {
         }
         return false;
     }
+
+    /**
+     * @param username
+     * @return
+     */
+    @Override
+    public SysUser findByUsername(String username) {
+        SysUser sysUser =  sysUserDao.findByUsername(username);
+        return sysUser;
+    }
 }

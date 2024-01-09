@@ -6,4 +6,6 @@ public interface SysUserService {
     boolean login(SysUser sysUser);
 
     boolean regist(SysUser sysUser);
+
+    SysUser findByUsername(String username);
 }

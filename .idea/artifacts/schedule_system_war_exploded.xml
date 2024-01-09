@@ -13,6 +13,11 @@
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.18" />
           <element id="file-copy" path="$PROJECT_DIR$/schedule-system/web/lib/druid-1.1.21.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/schedule-system/web/lib/mysql-connector-java-8.0.25.jar" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.15.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.15.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.15.0" />
+          <element id="library" level="project" name="Maven: jakarta.servlet:jakarta.servlet-api:6.0.0" />
+          <element id="library" level="project" name="Maven: tomcat:servlet-api:5.0.16" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="schedule-system/web/Web" />

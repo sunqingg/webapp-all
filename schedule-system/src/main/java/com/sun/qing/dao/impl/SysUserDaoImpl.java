@@ -43,4 +43,13 @@ public class SysUserDaoImpl implements SysUserDao {
         return i;
     }
 
+    /**
+     * @return
+     */
+    @Override
+    public SysUser findByUsername(String username) {
+       String sql = "select uid,username,user_pwd userPwd from sys_user where username = ?";
+        List<SysUser> list = baseDao.baseQuery(SysUser.class, sql, username);
+        return list.size() >0 ? list.get(0) : null;
+    }
 }
