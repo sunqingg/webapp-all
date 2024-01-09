@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Map;
 
 @WebServlet("/user/*")
 public class SysUserController extends BaseController {
@@ -72,14 +73,32 @@ public class SysUserController extends BaseController {
 
 
     protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        SysUser registUer = WebUtil.readJson(req, SysUser.class);
+        System.out.println(registUer);
         String username = req.getParameter("username");
         String userPwd = req.getParameter("userPwd");
         SysUser sysUser = new SysUser(null, username, userPwd);
         boolean b = userService.regist(sysUser);
         if (b) {
-            resp.sendRedirect("/login.html");
+            WebUtil.writeJson(resp,Result.ok(null));
         }else {
-            resp.sendRedirect("/registFail.html");
+            WebUtil.writeJson(resp,Result.build(null,ResultCodeEnum.USERNAME_USED));
         }
+//        if (b) {
+//            resp.sendRedirect("/login.html");
+//        }else {
+//            resp.sendRedirect("/registFail.html");
+//        }
+    }
+
+    protected void checkUsernameUsed(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        String username = req.getParameter("username");
+        SysUser sysUser = userService.findByUsername(username);
+        if (sysUser == null){
+            WebUtil.writeJson(resp,Result.ok(null));
+        }else {
+            WebUtil.writeJson(resp,Result.build(null,ResultCodeEnum.USERNAME_USED));
+        }
+
     }
 }
